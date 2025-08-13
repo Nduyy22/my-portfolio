@@ -55,7 +55,7 @@ const Projects = () => {
       id: 4,
       title: "Nosana Agent Challenge",
       description: "Nosana Builders' Challenge: Agent 101. Advanced agent system for distributed computing and blockchain integration with focus on decentralized infrastructure.",
-      image: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=500&h=300&fit=crop",
+      image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=500&h=300&fit=crop",
       technologies: ["TypeScript", "Distributed Computing", "Blockchain", "Agent Systems"],
       category: "blockchain",
       github: "https://github.com/Nduyy22/agent-challenge",
