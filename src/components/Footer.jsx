@@ -12,8 +12,10 @@ import {
   ExternalLink,
   Zap
 } from 'lucide-react'
+import { useTheme } from '../contexts/ThemeContext'
 
 const Footer = () => {
+  const { isDark } = useTheme()
   const socialLinks = [
     {
       icon: Github,
@@ -62,7 +64,7 @@ const Footer = () => {
   }
 
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className={`${isDark ? 'bg-gray-900 text-white' : 'bg-gray-100 text-gray-900'}`}>
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -80,7 +82,9 @@ const Footer = () => {
               <h3 className="text-2xl font-bold">Asep Sudrajat</h3>
             </div>
             
-            <p className="text-gray-300 mb-6 leading-relaxed">
+            <p className={`mb-6 leading-relaxed ${
+              isDark ? 'text-gray-300' : 'text-gray-600'
+            }`}>
               Passionate full-stack developer creating innovative solutions and beautiful 
               user experiences. Always excited to take on new challenges and learn cutting-edge technologies.
             </p>
@@ -94,13 +98,19 @@ const Footer = () => {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
                 >
-                  <div className="bg-gray-800 border border-gray-700 rounded-lg shadow-sm">
+                  <div className={`border rounded-lg shadow-sm ${
+                    isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'
+                  }`}>
                     <div className="p-3">
                       <div className="flex items-center space-x-2">
                         <stat.icon className="text-blue-400" size={16} />
                         <div>
-                          <div className="text-sm font-bold text-white">{stat.value}</div>
-                          <div className="text-xs text-gray-400">{stat.label}</div>
+                          <div className={`text-sm font-bold ${
+                            isDark ? 'text-white' : 'text-gray-900'
+                          }`}>{stat.value}</div>
+                          <div className={`text-xs ${
+                            isDark ? 'text-gray-400' : 'text-gray-500'
+                          }`}>{stat.label}</div>
                         </div>
                       </div>
                     </div>
@@ -122,7 +132,11 @@ const Footer = () => {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`flex items-center justify-center w-10 h-10 text-gray-400 ${social.color} transition-colors duration-300 hover:bg-gray-800 rounded-md`}
+                    className={`flex items-center justify-center w-10 h-10 transition-colors duration-300 rounded-md ${
+                      isDark 
+                        ? `text-gray-400 ${social.color} hover:bg-gray-800` 
+                        : `text-gray-600 ${social.color} hover:bg-gray-200`
+                    }`}
                   >
                     <social.icon size={20} />
                     <span className="sr-only">{social.label}</span>
@@ -139,13 +153,19 @@ const Footer = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            <h4 className="text-lg font-semibold mb-6">Quick Links</h4>
+            <h4 className={`text-lg font-semibold mb-6 ${
+              isDark ? 'text-white' : 'text-gray-900'
+            }`}>Quick Links</h4>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="flex items-center group text-gray-300 hover:text-white transition-colors p-0"
+                    className={`flex items-center group transition-colors p-0 ${
+                      isDark 
+                        ? 'text-gray-300 hover:text-white' 
+                        : 'text-gray-600 hover:text-gray-900'
+                    }`}
                   >
                     <ExternalLink 
                       size={14} 
@@ -165,11 +185,17 @@ const Footer = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.4 }}
           >
-            <h4 className="text-lg font-semibold mb-6">Let's Connect</h4>
+            <h4 className={`text-lg font-semibold mb-6 ${
+              isDark ? 'text-white' : 'text-gray-900'
+            }`}>Let's Connect</h4>
             <div className="space-y-4">
-              <div className="bg-gray-800 border border-gray-700 rounded-lg shadow-sm">
+              <div className={`border rounded-lg shadow-sm ${
+                isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'
+              }`}>
                 <div className="p-4">
-                  <p className="text-gray-300 text-sm mb-3">
+                  <p className={`text-sm mb-3 ${
+                    isDark ? 'text-gray-300' : 'text-gray-600'
+                  }`}>
                     Ready to start your next project?
                   </p>
                   <a
@@ -183,10 +209,14 @@ const Footer = () => {
               </div>
 
               <div className="flex flex-wrap gap-2">
-                <span className="inline-flex items-center rounded-full border border-transparent bg-gray-800 text-gray-300 px-2.5 py-0.5 text-xs font-semibold">
+                <span className={`inline-flex items-center rounded-full border border-transparent px-2.5 py-0.5 text-xs font-semibold ${
+                  isDark ? 'bg-gray-800 text-gray-300' : 'bg-gray-200 text-gray-700'
+                }`}>
                   Available for work
                 </span>
-                <span className="inline-flex items-center rounded-full border border-transparent bg-gray-800 text-gray-300 px-2.5 py-0.5 text-xs font-semibold">
+                <span className={`inline-flex items-center rounded-full border border-transparent px-2.5 py-0.5 text-xs font-semibold ${
+                  isDark ? 'bg-gray-800 text-gray-300' : 'bg-gray-200 text-gray-700'
+                }`}>
                   Remote friendly
                 </span>
               </div>
@@ -203,7 +233,11 @@ const Footer = () => {
         >
           <button
             onClick={scrollToTop}
-            className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50 border border-gray-700 text-gray-300 hover:bg-gray-800 hover:text-white h-9 px-3 py-2"
+            className={`inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50 border h-9 px-3 py-2 ${
+              isDark 
+                ? 'border-gray-700 text-gray-300 hover:bg-gray-800 hover:text-white' 
+                : 'border-gray-300 text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+            }`}
           >
             <ArrowUp size={16} className="mr-2" />
             Back to Top
@@ -212,7 +246,7 @@ const Footer = () => {
       </div>
 
       {/* Copyright Section */}
-      <div className="border-t border-gray-800">
+      <div className={`border-t ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <motion.div
             initial={{ opacity: 0 }}
@@ -220,11 +254,15 @@ const Footer = () => {
             viewport={{ once: true }}
             className="flex flex-col md:flex-row justify-between items-center"
           >
-            <div className="flex items-center space-x-2 text-gray-400 text-sm">
+            <div className={`flex items-center space-x-2 text-sm ${
+              isDark ? 'text-gray-400' : 'text-gray-600'
+            }`}>
               <span>© {new Date().getFullYear()} Asep Sudrajat. All rights reserved.</span>
             </div>
             
-            <div className="flex items-center space-x-2 text-gray-400 text-sm mt-4 md:mt-0">
+            <div className={`flex items-center space-x-2 text-sm mt-4 md:mt-0 ${
+              isDark ? 'text-gray-400' : 'text-gray-600'
+            }`}>
               <span>Made with</span>
               <Heart className="text-red-500" size={16} />
               <span>and lots of</span>

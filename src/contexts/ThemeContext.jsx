@@ -11,19 +11,20 @@ export const useTheme = () => {
 };
 
 export const ThemeProvider = ({ children }) => {
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(true); // Default to dark theme
 
   useEffect(() => {
     // Check localStorage for saved theme preference
     const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     
-    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-      setIsDark(true);
-      document.documentElement.classList.add('dark');
-    } else {
+    if (savedTheme === 'light') {
+      // Only switch to light if explicitly saved as light
       setIsDark(false);
       document.documentElement.classList.remove('dark');
+    } else {
+      // Default to dark theme (including first visit)
+      setIsDark(true);
+      document.documentElement.classList.add('dark');
     }
   }, []);
 
