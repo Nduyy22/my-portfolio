@@ -42,8 +42,8 @@ const Hero = () => {
   ]
 
   const socialLinks = [
-    { icon: Github, label: 'GitHub', href: '#', color: 'hover:bg-gray-800 hover:text-white' },
-    { icon: Linkedin, label: 'LinkedIn', href: '#', color: 'hover:bg-blue-600 hover:text-white' },
+    { icon: Github, label: 'GitHub', href: 'https://github.com/Nduyy22', color: 'hover:bg-gray-800 hover:text-white' },
+    { icon: Linkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/in/asep-sudrajat-514802376', color: 'hover:bg-blue-600 hover:text-white' },
     { icon: Mail, label: 'Email', href: 'mailto:asepsudrajat157@gmail.com', color: 'hover:bg-red-500 hover:text-white' }
   ]
 
@@ -582,6 +582,8 @@ const Hero = () => {
                   <motion.a
                     key={index}
                     href={social.href}
+                    target={social.href.startsWith('http') ? '_blank' : '_self'}
+                    rel={social.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                     className={`p-2 sm:p-3 rounded-xl transition-all duration-300 ${
                       isDark ? 'bg-white/10 hover:bg-white/20 text-gray-300' : 'bg-black/10 hover:bg-black/20 text-gray-600'
                     } ${social.color}`}
