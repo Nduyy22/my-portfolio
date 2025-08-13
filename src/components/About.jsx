@@ -54,7 +54,9 @@ const About = () => {
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="inline-flex items-center px-6 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium mb-6"
+            className={`inline-flex items-center px-6 py-2 rounded-full text-sm font-medium mb-6 ${
+              isDark ? 'bg-blue-900/30 text-blue-300 border border-blue-500/30' : 'bg-blue-100 text-blue-800'
+            }`}
           >
             <User className="w-4 h-4 mr-2" />
             About Me
@@ -83,17 +85,17 @@ const About = () => {
         >
           <motion.div variants={itemVariants} className="space-y-6 lg:space-y-8 px-4 lg:px-0">
             <div className="space-y-4 lg:space-y-6">
-              <h3 className="text-2xl sm:text-3xl font-bold leading-tight text-center lg:text-left ${
+              <h3 className={`text-2xl sm:text-3xl font-bold leading-tight text-center lg:text-left ${
                 isDark ? 'text-white' : 'text-gray-900'
-              }">
+              }`}>
                 Building the Future with{' '}
                 <span className="text-blue-600">Code</span> &{' '}
                 <span className="text-purple-600">Innovation</span>
               </h3>
 
-              <div className="space-y-4 lg:space-y-6 text-base lg:text-lg leading-relaxed ${
+              <div className={`space-y-4 lg:space-y-6 text-base lg:text-lg leading-relaxed ${
                 isDark ? 'text-gray-300' : 'text-gray-600'
-              }">
+              }`}>
                 <p>
                   I'm <span className={`font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>Asep Sudrajat</span>, a passionate Full Stack Developer specializing in 
                   cutting-edge technologies like AI, blockchain, and financial security systems. 

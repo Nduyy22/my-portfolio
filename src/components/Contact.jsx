@@ -11,8 +11,10 @@ import {
   Globe,
   Linkedin
 } from 'lucide-react'
+import { useTheme } from '../contexts/ThemeContext'
 
 const Contact = () => {
+  const { isDark } = useTheme()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -97,7 +99,9 @@ const Contact = () => {
   }
 
   return (
-    <section id="contact" className="py-16 lg:py-20 bg-gray-50">
+    <section id="contact" className={`py-16 lg:py-20 transition-colors duration-300 ${
+      isDark ? 'bg-gray-900' : 'bg-gray-50'
+    }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -107,11 +111,15 @@ const Contact = () => {
         >
           <div className="flex items-center justify-center mb-4">
             <MessageCircle className="text-blue-600 mr-2 w-6 h-6 sm:w-8 sm:h-8" />
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900">
+            <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-bold ${
+              isDark ? 'text-white' : 'text-gray-900'
+            }`}>
               Get In Touch
             </h2>
           </div>
-          <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed px-4">
+          <p className={`text-base sm:text-lg lg:text-xl max-w-2xl mx-auto leading-relaxed px-4 ${
+            isDark ? 'text-gray-300' : 'text-gray-600'
+          }`}>
             Have a project in mind? Let's discuss how we can work together to bring your ideas to life
           </p>
         </motion.div>
@@ -127,10 +135,14 @@ const Contact = () => {
           >
             <div className="space-y-4 lg:space-y-6">
               <motion.div variants={itemVariants}>
-                <h3 className="text-2xl font-bold text-gray-900 mb-6">
+                <h3 className={`text-2xl font-bold mb-6 ${
+                  isDark ? 'text-white' : 'text-gray-900'
+                }`}>
                   Let's Connect
                 </h3>
-                <p className="text-gray-600 mb-8">
+                <p className={`mb-8 ${
+                  isDark ? 'text-gray-300' : 'text-gray-600'
+                }`}>
                   I'm always open to discussing new opportunities, creative ideas, 
                   or potential collaborations. Feel free to reach out!
                 </p>
@@ -142,15 +154,21 @@ const Contact = () => {
                   variants={itemVariants}
                   whileHover={{ scale: 1.05, x: 10 }}
                 >
-                  <div className="bg-white hover:shadow-lg transition-all duration-300 rounded-lg border shadow-sm">
+                  <div className={`hover:shadow-lg transition-all duration-300 rounded-lg border shadow-sm ${
+                    isDark ? 'bg-gray-800 border-gray-700 hover:bg-gray-750' : 'bg-white'
+                  }`}>
                     <div className="p-4 lg:p-6">
                       <a href={info.href} className="flex items-center space-x-3 lg:space-x-4">
                         <div className={`p-2 lg:p-3 rounded-lg bg-gradient-to-r ${info.color} shadow-lg`}>
                           <info.icon className="text-white w-5 h-5 lg:w-6 lg:h-6" />
                         </div>
                         <div>
-                          <h4 className="font-semibold text-gray-900 text-sm lg:text-base">{info.title}</h4>
-                          <p className="text-gray-600 text-sm lg:text-base break-all">{info.value}</p>
+                          <h4 className={`font-semibold text-sm lg:text-base ${
+                            isDark ? 'text-white' : 'text-gray-900'
+                          }`}>{info.title}</h4>
+                          <p className={`text-sm lg:text-base break-all ${
+                            isDark ? 'text-gray-300' : 'text-gray-600'
+                          }`}>{info.value}</p>
                         </div>
                       </a>
                     </div>
@@ -159,11 +177,19 @@ const Contact = () => {
               ))}
 
               <motion.div variants={itemVariants}>
-                <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg border shadow-sm">
+                <div className={`rounded-lg border shadow-sm ${
+                  isDark 
+                    ? 'bg-gradient-to-br from-blue-900/30 to-indigo-900/30 border-gray-700' 
+                    : 'bg-gradient-to-br from-blue-50 to-indigo-50'
+                }`}>
                   <div className="p-4 lg:p-6">
                     <Clock className="text-blue-600 mb-3 w-6 h-6 lg:w-7 lg:h-7" />
-                    <h4 className="font-semibold text-gray-900 mb-2 text-sm lg:text-base">Response Time</h4>
-                    <p className="text-gray-600 text-sm lg:text-base leading-relaxed">
+                    <h4 className={`font-semibold mb-2 text-sm lg:text-base ${
+                      isDark ? 'text-white' : 'text-gray-900'
+                    }`}>Response Time</h4>
+                    <p className={`text-sm lg:text-base leading-relaxed ${
+                      isDark ? 'text-gray-300' : 'text-gray-600'
+                    }`}>
                       I typically respond within 24 hours during business days
                     </p>
                     <span className="inline-flex items-center rounded-full border border-transparent bg-green-100 text-green-800 px-2.5 py-0.5 text-xs font-semibold transition-colors mt-2">
@@ -182,9 +208,13 @@ const Contact = () => {
             viewport={{ once: true }}
             className="lg:col-span-2"
           >
-            <div className="bg-white shadow-xl rounded-lg border">
+            <div className={`shadow-xl rounded-lg border ${
+              isDark ? 'bg-gray-800 border-gray-700' : 'bg-white'
+            }`}>
               <div className="flex flex-col space-y-1.5 p-6">
-                <h3 className="text-2xl font-semibold leading-none tracking-tight">Send me a message</h3>
+                <h3 className={`text-2xl font-semibold leading-none tracking-tight ${
+                  isDark ? 'text-white' : 'text-gray-900'
+                }`}>Send me a message</h3>
               </div>
               <div className="p-6 pt-0">
                 {isSubmitted ? (
@@ -194,10 +224,12 @@ const Contact = () => {
                     className="text-center py-12"
                   >
                     <CheckCircle className="text-green-500 mx-auto mb-4" size={64} />
-                    <h4 className="text-2xl font-bold text-gray-900 mb-2">
+                    <h4 className={`text-2xl font-bold mb-2 ${
+                      isDark ? 'text-white' : 'text-gray-900'
+                    }`}>
                       Message Sent!
                     </h4>
-                    <p className="text-gray-600">
+                    <p className={`${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
                       Thank you for reaching out. I'll get back to you soon!
                     </p>
                   </motion.div>
@@ -205,7 +237,9 @@ const Contact = () => {
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
-                        <label htmlFor="name" className="text-sm font-medium text-gray-700">
+                        <label htmlFor="name" className={`text-sm font-medium ${
+                          isDark ? 'text-gray-300' : 'text-gray-700'
+                        }`}>
                           Full Name
                         </label>
                         <input
@@ -216,12 +250,18 @@ const Contact = () => {
                           onChange={handleChange}
                           placeholder="Your full name"
                           required
-                          className="flex h-10 w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                          className={`flex h-10 w-full rounded-md border px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${
+                            isDark 
+                              ? 'border-gray-600 bg-gray-700 text-white placeholder:text-gray-400' 
+                              : 'border-gray-300 bg-white text-gray-900 placeholder:text-gray-500'
+                          }`}
                         />
                       </div>
 
                       <div className="space-y-2">
-                        <label htmlFor="email" className="text-sm font-medium text-gray-700">
+                        <label htmlFor="email" className={`text-sm font-medium ${
+                          isDark ? 'text-gray-300' : 'text-gray-700'
+                        }`}>
                           Email Address
                         </label>
                         <input
@@ -232,13 +272,19 @@ const Contact = () => {
                           onChange={handleChange}
                           placeholder="your.email@example.com"
                           required
-                          className="flex h-10 w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                          className={`flex h-10 w-full rounded-md border px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${
+                            isDark 
+                              ? 'border-gray-600 bg-gray-700 text-white placeholder:text-gray-400' 
+                              : 'border-gray-300 bg-white text-gray-900 placeholder:text-gray-500'
+                          }`}
                         />
                       </div>
                     </div>
 
                     <div className="space-y-2">
-                      <label htmlFor="subject" className="text-sm font-medium text-gray-700">
+                      <label htmlFor="subject" className={`text-sm font-medium ${
+                        isDark ? 'text-gray-300' : 'text-gray-700'
+                      }`}>
                         Subject
                       </label>
                       <input
@@ -249,12 +295,18 @@ const Contact = () => {
                         onChange={handleChange}
                         placeholder="What's this about?"
                         required
-                        className="flex h-10 w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                        className={`flex h-10 w-full rounded-md border px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${
+                          isDark 
+                            ? 'border-gray-600 bg-gray-700 text-white placeholder:text-gray-400' 
+                            : 'border-gray-300 bg-white text-gray-900 placeholder:text-gray-500'
+                        }`}
                       />
                     </div>
 
                     <div className="space-y-2">
-                      <label htmlFor="message" className="text-sm font-medium text-gray-700">
+                      <label htmlFor="message" className={`text-sm font-medium ${
+                        isDark ? 'text-gray-300' : 'text-gray-700'
+                      }`}>
                         Message
                       </label>
                       <textarea
@@ -265,7 +317,11 @@ const Contact = () => {
                         onChange={handleChange}
                         placeholder="Tell me about your project or idea..."
                         required
-                        className="flex min-h-[80px] w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm ring-offset-background placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                        className={`flex min-h-[80px] w-full rounded-md border px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${
+                          isDark 
+                            ? 'border-gray-600 bg-gray-700 text-white placeholder:text-gray-400' 
+                            : 'border-gray-300 bg-white text-gray-900 placeholder:text-gray-500'
+                        }`}
                       />
                     </div>
 

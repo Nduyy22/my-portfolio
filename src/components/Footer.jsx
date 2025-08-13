@@ -77,7 +77,7 @@ const Footer = () => {
               <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center mr-3">
                 <Code className="text-white" size={24} />
               </div>
-              <h3 className="text-2xl font-bold">Your Name</h3>
+              <h3 className="text-2xl font-bold">Asep Sudrajat</h3>
             </div>
             
             <p className="text-gray-300 mb-6 leading-relaxed">
