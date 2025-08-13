@@ -393,7 +393,9 @@ const Hero = () => {
                       repeat: Infinity 
                     }}
                   >
-                    <currentRole.icon className={`w-6 h-6 bg-gradient-to-r ${currentRole.color} bg-clip-text text-transparent`} />
+                    <div className={`w-6 h-6 rounded bg-gradient-to-r ${currentRole.color} flex items-center justify-center`}>
+                      <currentRole.icon className="w-4 h-4 text-white" />
+                    </div>
                   </motion.div>
                   <div>
                     <h2 className={`text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold ${isDark ? 'text-gray-200' : 'text-gray-800'}`}>
